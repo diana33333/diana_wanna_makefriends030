@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diana is FINE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/uplogo.webp" type="image/x-icon">
+    <style>
+    /* 讓「最後更新」這行文字靠右 */
+        #hero .info-note {
+            display: block;      /* 變成區塊元素才能控制對齊 */
+            text-align: right;   /* 文字靠右對齊 */
+            width: 100%;         /* 確保佔滿容器寬度 */
+            margin-top: 10px;    /* 與上方的標籤文字拉開一點距離 */
+            padding-right: 10px; /* 讓文字不要死貼著最右邊邊緣 */
+        }
+    </style>
+
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="images/logo.webp" alt="Logo" style="height: 40px;">
+            </a>
+
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="hero">
+            <div class="welcome-header">
+                <img src="images/profile.webp" alt="Logo" class="welcome-logo">
+                
+                <h1 class="welcome-title">🐆⛄❄️♾️</h1>
+            </div>
+
+            <p>#美男王子 #戀與深空 #未定事件簿 #chiikawa #NIJI EN</p>
+                <!-- 換成這個 -->
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggle(this)">
+                        About Me
+                        <span class="chevron">▾</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-inner">
+                            <div class="accordion-content">
+                                <div class="info-content"><b>稱呼? 叫我33最快</b></div>
+                                <span class="info-note" style="font-style: normal;">別管帳號名了 我只是取爽的www</span>
+                                <span class="info-note" style="font-style: normal;">私訊不在這支帳號 找我可以留言給我or這帳號訊息想到才會開..</span>
+                                <br>
+
+                                <div class="info-content"><b>版面組成:日常+廢文80% 夢向20%</b></div>
+                                <span class="info-note" style="font-style: normal;">廢話廢文偏多 交流隨意互相尊重 相處起來舒服就好 比較看電波相處</span>
+                                <span class="info-note" style="font-style: normal;">偶爾發點穿搭照片?</span>
+                                <span class="info-note" style="font-style: normal;">常爆言及髒話注意 介意者可能不適合當朋友 不適合我會直接刪掉/可直接刪掉我</span>
+                                <br>
+                                <div class="info-content"><b>相處模式...?</b></div>
+                                <span class="info-note" style="font-style: normal;">隨意輕鬆就好 介意雙向者可能不太適合 但會努力交流互動 會視熟度調整互動頻率 以免太超過而踩到底線</span>
+                                <span class="info-note" style="font-style: normal;"><b>不搞小團體/小圈圈</b> 喜歡搞親友團啥的可能也不太適合認識 可以私聊交流~</span>
+                                <span class="info-note" style="font-style: normal;"><b>不夢向交友及夢向互動(e.g. 留言人機誇誇、分享紀念圖等) 以按表符互動為主 </b></span>
+                                <br>
+
+                                <div class="info-content"><b>喜歡的東西? 夢向相關? 可能算多夢? 行為像夢女但有的又夢不起來?</b></div>
+                                <span class="info-note" style="font-style: normal;">美男王子克拉維斯夢女 選拒同擔嫁 會自行花錢委託克拉單人圖><</span>
+                                <span class="info-note" style="font-style: normal;">未定事件簿陸景和夢女(?...快棄夢ㄌ....) 選拒同擔嫁</span>
+                                <span class="info-note" style="font-style: normal;">戀與深空黎深鐵血單推 很喜歡黎但就是夢不起來XD 同擔嫁大歡迎!!!</span>
+                                <span class="info-note" style="font-style: normal;">chiikawa 桃媽 會黑小桃但是真的愛他XD </span>
+                                <br>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggle(this)">
+                        Main
+                        <span class="chevron">▾</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-inner">
+                            <div class="accordion-content">
+                                <span class="info-note" style="font-style: normal;"><b>美男王子</b> 克拉維斯(也愛聲優!!! Kenji我的神)</span>
+                                <span class="info-note" style="font-style: normal;"><b>戀與深空</b> 黎深</span>
+                                <span class="info-note" style="font-style: normal;"><b>未定事件簿</b> 陸景和</span>
+                                <span class="info-note" style="font-style: normal;"><b>BangDream!</b> 白金燐子 團推Ave Mujica & Roselia 團推部分包含聲優</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggle(this)">
+                        ⚠️IMPORTANT
+                        <span class="chevron">▾</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-inner">
+                            <div class="accordion-content">
+                                <div class="info-content"><b>強烈拒絕認識任何與立花凪(Lunette Grimoire/露涅特)關係交好or有任何共友/關係的人</b></div>
+                                <span class="info-note">曾經很要好過，因為私人原因無意再與對方有任何往來，審友較嚴格是保護自己，也請不要內鬼我或內鬼對方。</span>
+                                <span class="info-note"><b>跟他是朋友的人我能保證我們電波是200%不合的 不好意思。</b></span>
+                                <br>
+                                <div class="info-content"><b>無意認識20歲以下</b></div>
+                                <span class="info-note">未成年看過太多炎上事件 成年後再交流也不遲。</span>
+                                <br>
+                                <div class="info-content"><b>內鬼吃瓜仔</b></div>
+                                <span class="info-note">如題。</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggle(this)">
+                        Others
+                        <span class="chevron">▾</span>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-inner">
+                            <div class="accordion-content">
+                                <div class="info-content"><b>放圖快速明瞭(?) 列幾個印象比較深也喜歡的作品</b></div>
+                                <span class="info-note" style="font-style: normal;">戰姬絕唱</span>
+                                <span class="info-note" style="font-style: normal;">光與夜之戀(太忙了玩不過來只能暫時淡坑...)</span>
+                                <span class="info-note" style="font-style: normal;">Happy tree friends</span>
+                                <span class="info-note" style="font-style: normal;">暮蟬悲鳴時(比起新版更愛舊版XD)</span>
+                                <br>
+
+                                <div class="char-group">
+                                <div class="info-content"><b>NIJI EN</b></div>
+                                    <div class="fav-char-flex">
+                                        <div class="char-thumb"><img src="images/niji_maria.webp"></div>
+                                        <div class="char-thumb"><img src="images/niji_enna.webp"></div>
+                                        <div class="char-thumb"><img src="images/niji_pomu.webp"></div>
+                                        <div class="char-thumb"><img src="images/niji_ren.webp"></div>
+                                        <div class="char-thumb"><img src="images/niji_vox.webp"></div>
+                                    </div>
+                                </div>
+                                <br>
+
+                                <div class="char-group">
+                                <div class="info-content"><b>LoveLive!!</b></div>
+                                    <div class="fav-char-flex">
+                                        <div class="char-thumb"><img src="images/ll1.webp"></div>
+                                        <div class="char-thumb"><img src="images/ll2.webp"></div>
+                                        <div class="char-thumb"><img src="images/ll3.webp"></div>
+                                        <div class="char-thumb"><img src="images/ll4.webp"></div>
+                                        <div class="char-thumb"><img src="images/ll5.webp"></div>
+                                        <div class="char-thumb"><img src="images/ll6.webp"></div>
+                                        <div class="char-thumb"><img src="images/ll7.webp"></div>
+                                    </div>
+                                </div>
+                                <br>
+
+                                <div class="char-group">
+                                <div class="info-content"><b>三次元</b></div>
+                                <div class="fav-char-flex">
+                                    <div class="char-thumb"><img src="images/nmc.webp"></div>
+                                    <div class="char-thumb"><img src="images/kei.webp"></div>
+                                    <div class="char-thumb"><img src="images/mitsuki.png"></div>
+                                </div>
+                        </div>
+                        </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- <span class="info-note">最後更新:2026/04/29</span> -->
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>

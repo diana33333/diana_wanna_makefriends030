@@ -1,0 +1,648 @@
+/* 基本重設 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 背景換成淡淡的粉紫色 */
+    background-color: #f3e5f5; 
+    color: #4a148c; /* 字體換成深紫色 */
+    background-image: linear-gradient(rgba(243, 229, 245, 0.8), rgba(243, 229, 245, 0.8)), url('images/background.webp');
+    background-size: cover;     /* 讓圖片鋪滿整個螢幕 */
+    background-attachment: fixed; /* 捲動時背景固定，很有高級感 */
+}
+
+html {
+    /* 預留空間，避免內容因為滾動條出現而位移 */
+    scrollbar-gutter: stable;
+}
+
+/* 導覽列容器 */
+nav {
+    width: 100%;
+    /* 換成深紫色背景 */
+    background: #4a148c; 
+    color: white;
+    padding: 0.5rem 0;
+    /* position: sticky; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* 3. 增加毛玻璃效果 */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* 4. 確保層級最高，永遠壓在內容上面 */
+    z-index: 9999;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* 關鍵：強制 Logo 在左，漢堡/按鈕在右 */
+    align-items: center;
+    padding: 10px 20px;
+    position: relative; /* 讓手機版選單可以根據這個容器定位 */
+    justify-content: center;
+}
+
+/* 新增：將漢堡和小插圖包在一起 */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* 漢堡跟插圖之間的間距 */
+}
+
+.nav-links {
+    list-style: none; /* 移除圓點 */
+    display: flex;
+    gap: 20px; /* 按鈕之間的間距 */
+    margin: 0;
+    padding: 0;
+}
+
+/* 導覽列專用的按鈕樣式 */
+.nav-btn {
+    text-decoration: none;
+    display: inline-block;
+    background: transparent;
+    color: white;
+    border: 1px solid #e1bee7; /* 淺紫色邊框 */
+    padding: 8px 15px;
+    border-radius: 20px; /* 圓角一點更好看 */
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background: #e1bee7;
+    color: #4a148c;
+}
+
+.gallery-row {
+    display: flex;
+    justify-content: center; /* 圖片居中 */
+    gap: 20px;               /* 圖片之間的間距 */
+    margin-top: 20px;        /* 與上方標籤文字的距離 */
+}
+
+.mini-img {
+    height: 80px;            /* 固定高度，寬度會自動縮放 */
+    width: auto;
+    border-radius: 10px;     /* 給圖片一點點圓角，看起來更柔和 */
+    transition: transform 0.3s; /* 滑鼠移上去的縮放動畫 */
+    box-shadow: 0 4px 15px rgba(74, 20, 140, 0.2);
+    cursor: pointer;
+}
+
+.mini-img:hover {
+    /* transform: scale(1.1);   滑鼠移上去稍微變大，增加互動感 */
+    transform: translateY(-5px) scale(1.05); /* 向上飄浮並放大 */
+    box-shadow: 0 8px 25px rgba(74, 20, 140, 0.4);
+}
+
+/* 1. 定義：載入時慢慢浮現 (Fade In) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); 
+        /* 從下方一點點的地方浮上來 */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. 定義：持續的呼吸晃動 (Floating) */
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+#hero {
+    margin-top: 100px;
+    /* 確保內容層級低於 nav */
+    position: relative;
+    z-index: 1;
+    height: auto;
+    text-align: center;
+    padding: 40px;
+    /* background: white; */
+    background-color: rgba(255, 255, 255, 0.4); 
+
+    /* 這是靈魂所在：毛玻璃效果 */
+    /* 它會讓背景模糊，這樣底圖的顏色會透進來，但細節不會干擾文字閱讀 */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* 為了相容 Safari 瀏覽器 */
+
+    /* background-color: rgba(255, 255, 255, 0.7); */
+    /* backdrop-filter: blur(8px); */
+    color: #4a148c;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(74, 20, 140, 0.1); /* 帶有紫色的陰影 */
+    border: 1px solid #e1bee7;
+    /* --- 核心：同時套用兩個動畫 --- */
+    opacity: 0; /* 初始隱藏 */
+    
+    /* 說明：
+       1. fadeIn: 1.5秒完成，緩出，停在結束狀態
+       2. floating: 4秒一次，無限循環，延遲 1.5秒(等浮現完再開始晃) 
+    */
+    animation: 
+        fadeIn 1.5s ease-out forwards, 
+        floating 4s ease-in-out infinite 1.5s;
+}
+
+/* 主按鈕 */
+button#action-btn {
+    background-color: #7b1fa2; /* 中紫色 */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+button#action-btn:hover {
+    background-color: #4a148c;
+    transform: translateY(-2px); /* 懸浮往上飄的效果 */
+}
+
+/* 移除 Logo 連結的預設樣式 */
+.logo-link {
+    text-decoration: none; /* 移除底線 */
+    color: inherit;        /* 繼承原本的顏色（白色） */
+    flex-shrink: 0;
+}
+
+.logo {
+    margin: 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+/* 滑鼠移上去時稍微變淡，讓使用者知道這是可以點的 */
+.logo:hover {
+    opacity: 0.8;
+}
+
+.profile-pic {
+    width: 150px;      /* 設定寬度 */
+    height: 150px;     /* 設定高度 */
+    object-fit: cover; /* 確保圖片縮放時不會變形 */
+    border-radius: 50%; /* 變成圓形 */
+    border: 3px solid #7b1fa2; /* 加上紫色邊框 */
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* 漢堡圖案樣式 */
+.hamburger {
+    display: none; /* 平時隱藏 */
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    /* 這裡可以調整漢堡的順序，如果你想讓它在插圖左邊或右邊 */
+    order: 1;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+
+/* 讓 Logo 和標題並排 */
+.welcome-header {
+    display: flex;
+    align-items: center; /* 垂直置中 */
+    justify-content: center; /* 水平置中 */
+    gap: 20px; /* Logo 和文字之間的間距 */
+    margin-bottom: 15px;
+}
+
+/* 調整 Welcome 專屬 Logo 的大小 */
+.welcome-logo {
+    height: 60px; /* 根據需求調整高度 */
+    width: auto;
+    /* 如果想讓 Logo 也有圓角或陰影，可以在這裡加 */
+    /* border-radius: 50%; */
+}
+
+/* 確保標題不會換行太突兀 */
+.welcome-title {
+    margin: 0;
+    color: #4a148c;
+    font-size: 2.5rem; /* 視情況調整大小 */
+}
+
+/* 手機版 (螢幕寬度小於 768px 時) */
+@media (max-width: 768px) {
+
+    #hero {
+        margin: 20px 10px;    /* 1. 減少邊距，讓手機版左右空間更大 */
+        padding: 30px 15px;   /* 2. 縮小內距，避免把文字往中間擠 */
+        height: auto;         /* 3. 確保高度自動，隨內容撐開 */
+        max-height: none;     /* 4. 移除任何可能限制高度的設定 */
+        overflow: visible;    /* 5. 讓撐開的內容正常顯示 */
+        margin-top: 80px;
+    }
+
+    /* 針對 About Me 頁面裡長串的文字內容 */
+    .about-text {
+        width: 100%;
+        overflow-wrap: break-word; /* 6. 防止長單字或網址衝破邊界 */
+    }
+
+    .info-content {
+        font-size: 0.95rem;   /* 7. 手機版字體稍微調小一點，視覺更平衡 */
+        line-height: 1.5;
+    }
+    /* 針對 About Me 頁面裡長串的文字內容 */
+    .about-text {
+        width: 100%;
+        overflow-wrap: break-word; /* 6. 防止長單字或網址衝破邊界 */
+    }
+
+    .info-content {
+        font-size: 0.95rem;   /* 7. 手機版字體稍微調小一點，視覺更平衡 */
+        line-height: 1.5;
+    }
+
+    .welcome-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hamburger {
+        display: flex; /* 顯示漢堡 */
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute; /* 絕對定位 */
+        top: 100%; /* 剛好在導航欄下方 */
+        left: 0;
+        width: 100%;
+        background-color: #4a148c;
+        padding: 0; /* 移除預設間距 */
+        margin: 0;
+        z-index: 1000; /* 確保它在最上層 */
+    }
+
+    /* 當我們點擊漢堡，幫 nav-links 加上 "active" class 就會顯示 */
+    .nav-links.active {
+        display: flex !important;
+    }
+
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.1); /* 加入細細的分隔線 */
+    }
+
+    .nav-links .nav-btn {
+        border: none; /* 手機版可以不要框線，看起來更整潔 */
+        width: 100%;
+        padding: 15px 0;
+        border-radius: 0;
+    }
+}
+
+.about-flex {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    text-align: left; /* 改成靠左對齊比較好讀 */
+}
+
+.about-img img {
+    width: 200px;
+    border-radius: 50%;
+    border: 3px solid #e1bee7;
+}
+
+/* 針對 About Me 頁面的文字清單設定 */
+.info-list {
+    list-style: none; /* 確保沒有圓點 */
+    padding: 0;
+    margin: 10px 0;   /* 縮減整體上下外距 */
+    text-align: left; /* 文字靠左對齊 */
+}
+
+.info-list li {
+    /* 1. 縮減行距：將原本的 15px 改為 8px */
+    margin: 8px 0; 
+    padding-bottom: 2px;
+    
+    border-bottom: none; 
+    text-decoration: none; 
+    
+    font-size: 1.1rem;
+    line-height: 1.4; /* 稍微調緊行高，讓視覺更緊湊 */
+
+    /* 2. 統一顏色：使用與 About Me 標題相近的紫色 */
+    color: #6a1b9a; 
+}
+
+/* 讓「主推」、「愛好」等標籤顏色一致但維持加粗 */
+.info-list li strong {
+    color: #6a1b9a; 
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.info-note {
+    display: block;    /* 確保它自己佔一行 */
+    font-size: 0.85rem; /* 字體比內容小一點 */
+    color: #9c4dcc;    /* 使用稍微淺一點的紫色做區隔 */
+    margin-top: -3px;  /* 緊貼著標題 */
+    margin-bottom: 8px;/* 與下方內容保持一點距離 */
+    opacity: 0.8;      /* 增加一點透明度，更有備註感 */
+    font-style: italic;/* 可選：斜體字增加精緻感 */
+}
+
+/* 社交連結專屬樣式 */
+.social-link {
+    color: #6a1b9a; /* 使用你最喜歡的紫色 */
+    text-decoration: none; /* 移除預設底線 */
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 1px dashed rgba(106, 27, 154, 0.3); /* 加入淡淡的紫色虛線底線 */
+    padding-bottom: 2px;
+}
+
+.social-link:hover {
+    color: #4a148c; /* 移上去變深紫 */
+    border-bottom: 1px solid #4a148c; /* 虛線變實線 */
+    padding-left: 5px; /* 移上去稍微右移，增加互動感 */
+}
+
+.gallery-item img {
+    pointer-events: none; /* 防止直接拖拽圖片 */
+    user-select: none;    /* 防止選取 */
+    border-radius: 15px;
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 藝廊容器 */
+.gallery-container {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1); /* 微透明背景感 */
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    text-align: center; /* 讓裡面的 span 和 h2 都置中 */
+}
+
+.gallery-title {
+    text-align: center;
+    color: #4a148c;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+/* 網格核心設定 */
+.clavis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* 自動計算寬度 */
+    grid-auto-rows: 150px; /* 每一格的基本高度 */
+    gap: 15px;
+    grid-auto-flow: dense; /* 自動填滿空隙 */
+}
+
+.grid-item {
+    overflow: hidden;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 確保圖片不變形 */
+    pointer-events: none; /* 基礎防盜：禁止拖拽 */
+}
+
+/* 懸停效果：滑鼠移上去稍微變大 */
+.grid-item:hover {
+    transform: scale(1.03);
+    border-color: #4a148c;
+}
+
+/* 特殊形狀控制 */
+.item-portrait { grid-row: span 2; }   /* 直圖佔兩格高度 */
+.item-landscape { grid-column: span 2; } /* 橫圖佔兩格寬度 */
+.item-square { grid-row: span 1; grid-column: span 1; }
+ 
+/* 1. 統一白色容器的寬度與位置 */
+/* 鎖定中間色塊寬度，達成克拉維斯頁面的效果 */
+.marius-center-box {
+    max-width: 800px !important; 
+    width: 90% !important;
+    margin: 40px auto !important; /* 置中且拉開上下間距 */
+    padding: 30px !important;
+    background: rgba(255, 255, 255, 0.75) !important; /* 玻璃擬態白底 */
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* 佈局 A：左二右一 */
+.marius-grid-wrapper {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+.marius-left-side { flex: 1; display: flex; flex-direction: column; gap: 15px; }
+.marius-right-side { flex: 1; }
+
+/* 佈局 B：橫版圖片微調 (縮小比例以對齊) */
+.marius-full-display {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+.marius-full-display img { width: 100%; height: auto; display: block; }
+
+/* 圖片通用樣式與紫色邊框 */
+.marius-img-item {
+    border-radius: 15px;
+    overflow: hidden;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.marius-img-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.portrait-mode { height: 100%; }
+
+/* 滑鼠懸停效果 */
+.marius-img-item:hover, .marius-full-display:hover {
+    transform: scale(1.03);
+    border-color: #7b1fa2 !important; /* 紫色邊框 */
+    box-shadow: 0 0 15px rgba(123, 31, 162, 0.4);
+}
+
+/* 文章按鈕容器 */
+.article-btn-container {
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+
+/* 按鈕本體 */
+.article-action-btn {
+    display: inline-block;
+    background: #7b1fa2; /* 與導覽列相近的中紫色 */
+    color: white !important;
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(123, 31, 162, 0.3);
+    border: 1px solid #e1bee7;
+}
+
+/* 滑鼠懸停效果 */
+.article-action-btn:hover {
+    background: #4a148c; /* 深紫色 */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(74, 20, 140, 0.5);
+    letter-spacing: 1px; /* 稍微撐開字距增加高級感 */
+}
+
+.article-action-btn:active {
+    transform: translateY(-1px);
+}
+
+details {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+}
+
+summary {
+    padding: 0.875rem 1.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none; /* 移除預設三角形 */
+}
+
+summary::-webkit-details-marker { display: none; } /* Safari */
+
+.accordion {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+}
+.accordion-header {
+    padding: 0.875rem 1.25rem;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.chevron {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+.accordion-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+}
+.accordion-body.open {
+    grid-template-rows: 1fr;
+}
+.accordion-inner {
+    overflow: hidden;
+}
+.accordion-content {
+    padding: 0.5rem 1.25rem;
+    font-size: 13px;
+    border-top: 1px solid #ddd;
+    text-align: left;
+}
+
+.accordion-content .info-note {
+    display: block !important;
+    text-align: left !important;
+    padding-right: 0 !important;
+}
+
+.accordion-content .char-thumb {
+    width: 60px !important;
+    height: 60px !important;
+}
+
+.accordion-content .char-thumb img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.accordion-content .fav-char-flex {
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
+.accordion-content .char-thumb {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+}
+
+.accordion-content .fav-char-flex {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    margin-top: 5px !important;
+}
+
+/* button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+} */

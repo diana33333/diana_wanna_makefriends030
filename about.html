@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/uplogo.webp" type="image/x-icon">
+    <style>
+    .about-banner {
+        width: 100%;
+        max-height: 250px; /* 跟下方設定須同步 */     
+        /* max-height: 180px;   */
+        margin: 10px 0 20px 0;  /* 調整上下間距 */
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(123, 31, 162, 0.2);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+    }
+
+    /* 2. 圖片裁剪設定 */
+    .about-banner img {
+        width: 100%;
+        height: 250px;   /* 跟上方設定須同步 */            
+        display: block;
+        object-fit: cover;      
+        object-position: center 90%; 
+        /* object-position: bottom 90%; */
+    }
+
+    /* 3. 懸停效果維持 */
+    .about-banner:hover {
+        transform: scale(1.01);
+        border-color: #7b1fa2;
+    }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="images/logo.webp" alt="Logo" style="height: 40px;">
+            </a>
+        
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- <a href="index.html" class="logo-link">
+                <img src="images/logo.png" alt="Logo" style="height: 40px;">
+            </a> -->
+            <ul class="nav-links">
+                <li><a href="about.html" class="nav-btn">Me</a></li>
+                <li><a href="clavis.html" class="nav-btn">Clavina</a></li>
+                <li><a href="marius.html" class="nav-btn">璃景夢回</a></li>
+                <li><a href="zayne.html" class="nav-btn">小黎</a></li>
+                <li><a href="another.html" class="nav-btn">Another</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- <section id="hero">
+            <h1>about me</h1>
+            <p>這是用 HTML、CSS 和 JavaScript 打造的起點。</p>
+            <button id="action-btn">點擊我有驚喜</button>
+        </section> -->
+
+        
+        <section id="hero">
+            <div class="welcome-header">
+                <img src="images/profile_about.webp" alt="Logo" class="welcome-logo">
+                
+                <h1 class="welcome-title">✨About Me✨</h1>
+            </div>
+
+            <div class="about-text">
+                <p>目前在倫敦留學，垃圾話很多的宅宅夢女</p>
+                <div class="about-banner">
+                    <img src="images/about_h.webp" alt="Banner">
+                </div>
+                <ul class="info-list">
+
+                    <li>
+                        <strong>稱呼:33/Diana</strong>
+                        <div class="info-content">叫33比較快 留學後的現友都直接叫我Diana</div>
+                        <div class="info-content">認識多年的現友稱呼可隨意XD</div>
+                    </li>
+                    <br>
+                    <li>
+                        <strong>✨關於我本人：</strong>
+                        <div class="info-content">已成年20+ 目前正在英國留學中 就讀理工相關科系</div>
+                        <span class="info-note">找我有7or8小時時差><</span>
+                        <div class="info-content">會消費推角 愛他就要黑他(???</div>
+                        <div class="info-content">我的帳號我開心就好 相處兩人舒服即可</div>
+                        <div class="info-content">不混任何小圈圈、夢圈</div>
+                        <div class="info-content">不適合可以直接刪友 不接受破鏡重圓</div>
+                        <div class="info-content">怎麼對待我就怎麼對待你</div>
+                        <div class="info-content">內鬼請離開謝謝 感恩的心🫶</div>
+                        <span class="info-note">不接受任何背刺/被背刺，請學會尊重每個人。</span>
+                        <div class="info-content">支持一戶一老公(?) 選拒同擔嫁</div>
+                        <div class="info-content">偶爾會發日系穿搭照片(地雷系、lolita這樣風格的穿搭)</div>
+                        <div class="info-content">會帶周邊/娃娃出門拍照、背痛包出門</div>
+                        <div class="info-content">會跑線下活動/場次</div>
+                        <span class="info-note">網上比較外向一點 現生是大社恐但會努力社交QUQ</span>
+                        <div class="info-content">喜歡用買狗跟母雞卡梗圖XD</div>
+                    </li>
+                    <br>
+                        <li>
+                        <strong>⚠️IMPORTANT</strong>
+                        <br>
+                            <div class="info-content"><b>強烈拒絕認識任何與立花凪(Lunette Grimoire/露涅特/mingying0106)關係交好的人</b></div>
+                            <span class="info-note">我們曾經是很好的朋友，本人感到不被她尊重且已長期無法接受她的行為態度很久了，請不要內我也不要內對方鬼。</span>
+                            <div class="info-content"><b>無意願再認識任何坑美男惡徒的玩家</b></div>
+                            <span class="info-note">原因承前，有一定機率與她是共友以及內鬼考量。無意願再認識任何有坑美男惡徒的玩家。</span>
+                        </li>
+                    <br>
+                    <li>
+                        <strong>🆙主坑單+推角：</strong>
+                        <div class="info-content">未定事件簿 ♡陸景和</div>
+                        <div class="info-content">美男王子 ♡克拉維斯</div>
+                        <div class="info-content">戀與深空 ♡黎深</div>
+                        <div class="info-content">Chiikawa ♡Momonga</div>
+                        <div class="info-content">ASMRZ ♡車清一 </div>
+                        <div class="info-content">光與夜之戀 ♡蕭逸&查理蘇 </div>
+                        <span class="info-note">真的太忙目前暫退坑了QQ</span>
+                        <div class="info-content">Lovelyz ♡Kei </div>
+                    </li>
+                    <br>
+                    <li>
+                        <strong>🔅其餘坑單：</strong>
+                        <span class="info-note">推角很多不一一列出 基本上會追整個企畫或系列</span>
+                        <span class="info-note">
+                            可直接點 <a href="another.html" class="social-link">Another</a> 查看詳細!
+                        </span>
+                        <div class="info-content">LoveLive!! </div>
+                        <div class="info-content">BangDream</div>
+                        <div class="info-content">日本聲優 </div>
+                        <span class="info-note">主關注邦邦、LL系列，女聲優較熟悉!</span>
+                        <span class="info-note">男聲優特愛野島健兒><!!!!!</span>
+                        <div class="info-content">NIJISANJI EN </div>
+                        <div class="info-content">歐美卡通 Adventure Time (追英配為主)</div>
+                        <div class="info-content">歐美卡通 Regular Show (追英配為主)</div>
+                        <div class="info-content">歌塑世界 ACTORS Songs connection</div>
+                        <span class="info-note">推鑑香水月 野島健兒野島健兒野島健兒!!!!</span>
+                    </li>
+                    <br>
+                    <li>
+                        <strong>🌐Find Me</strong>
+                        <span class="info-note">IG有現生帳號 見過面再交換/我們真的很熟可以交換!</span>
+                        <!-- <div class="info-content">
+                            <a href="https://www.facebook.com/share/14TUYsykUCv/" target="_blank" class="social-link">臉書本帳 (私訊直接找這支)</a>
+                        </div> -->
+                        <div class="info-content">
+                            <a href="https://marshmallow-qa.com/5thr0v0d5lx53qc?t=41oA6C&utm_medium=url_text&utm_source=promotion" target="_blank" class="social-link">匿名箱</a>
+                        </div>
+                            
+                        <div class="info-content">
+                            <a href="https://www.instagram.com/diana._.33_shan?igsh=MXEyb3c3azRucHV2eA==" target="_blank" class="social-link">Instagram (追星公開帳號)</a>
+                        </div>
+
+                        <div class="info-content">
+                            <a href="https://youtube.com/@yushan-q8y?si=S0wSa26_BKnWw4uG" target="_blank" class="social-link">Youtube</a>
+                            <span class="info-note">無聊會做做影片~</span>
+                        </div>
+                        <div class="info-content">
+                            <a href="#" target="_blank" class="social-link">Threads</a>
+                            <span class="info-note">深空濃度高，常在上面亂講話，僅限深空同好++</span>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
