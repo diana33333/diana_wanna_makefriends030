@@ -324,6 +324,22 @@ button#action-btn:hover {
         padding: 15px 0;
         border-radius: 0;
     }
+
+    .image-row {
+        flex-direction: column; /* 關鍵：從並排改為垂直堆疊 */
+        width: 100%;            /* 寬度撐滿 */
+        gap: 15px;              /* 圖片上下之間的間距 */
+        align-items: center;    /* 圖片水平置中 */
+    }
+
+    .img-box {
+        width: 90% !important;  /* 強制讓圖片盒子的寬度佔螢幕的 90% */
+        flex: none !important;  /* 取消原本在電腦版設定的 flex 比例分配 */
+    }
+
+    .landscape, .portrait {
+        flex: none !important;  /* 確保權重設定不影響手機版 */
+    }
 }
 
 .about-flex {
