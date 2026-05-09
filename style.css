@@ -127,6 +127,8 @@ max-width: 1000px;
 
 #hero {
     margin-top: 100px;
+    max-width: 800px;  /* 加這行 */
+    width: 90%;        /* 加這行 */
     /* 確保內容層級低於 nav */
     position: relative;
     z-index: 1;
@@ -631,6 +633,59 @@ summary::-webkit-details-marker { display: none; } /* Safari */
     gap: 10px !important;
     margin-top: 5px !important;
 }
+
+/* 圖片組合容器 */
+.image-row {
+    display: flex;         /* 開啟彈性佈局 */
+    gap: 15px;             /* 兩張圖片之間的間距 */
+    align-items: flex-end; /* 讓圖片對齊底部，版面較穩 */
+    margin-top: 20px;
+    width: 90%;            /* 調整組合佔框框的寬度 (可改為 100%) */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 個別圖片盒子的通用設定 */
+.img-box {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.img-box img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* 橫圖比例 (佔較多寬度) */
+.landscape {
+    flex: 2;               /* 寬度權重較大 */
+}
+.landscape img {
+    aspect-ratio: 16 / 9;
+}
+
+.image-row {
+    display: flex;
+    gap: 15px;
+    align-items: center;    /* 關鍵修改：讓不同高度的圖片在水平線中心對齊 */
+    justify-content: center; /* 確保整個組合在框框內水平置中 */
+    margin-top: 20px;
+    width: 95%;             /* 視需求調整總寬度 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 為了讓視覺比例更和諧，建議微調兩者的權重 */
+.landscape {
+    flex: 1.5;              /* 稍微縮小橫圖權重，避免直圖顯得太窄 */
+}
+
+.portrait {
+    flex: 1;                /* 直圖權重 */
+}
+
 
 /* button {
     padding: 10px 20px;
